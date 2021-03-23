@@ -1,0 +1,118 @@
+.container-fluid {
+    width: 100%;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: skyblue;
+}
+
+h1 {
+    padding-top: 15px;
+}
+
+.searchContainer {
+    margin-left:15px;
+    float:left;
+}
+
+.searchText {
+    font-size: 20px;
+}
+
+.searchFill {
+    width:374px;
+    border-radius: 5px;
+    height:30px;
+}
+
+.searchBtn {
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.quickLinks {
+    margin-top: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightslategray;
+    width: 160px;
+    background-color: rgb(144, 238, 207);
+}
+
+h4 {
+    text-align: center;
+}
+#quickCityBtn {
+    display:Block;
+    width:140px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.weatherDisplay {
+    float:right;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    width: 70%;
+    text-align: left;
+  
+}
+h3, h5, #targetDetails {
+    margin-left: 10px;
+}
+
+#targetDetails {
+    margin-bottom: 8px;
+}
+
+.temprature {
+    margin-top:10px;
+}
+.fiveDayForecast {
+    float:right;
+    width: 70%;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.forecastContainer {
+    display:flex;
+    margin-left:10px;
+}
+
+#fiveDay {
+    margin-right: 75px;
+}
+
+.date {
+    margin-top: 5px;
+}
+
+.humidity2 {
+    margin-bottom: 5px;
+    text-align: left;
+    margin-left:5px;
+}
+
+.temp {
+    text-align: left;
+    margin-left:5px;
+}
+
+
+
+.forecastA, .forecastB,
+.forecastC, .forecastD,
+.forecastE {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    width: 250px;
+    text-align: center;
+    background-color: skyblue;
+    color:white;
+}
