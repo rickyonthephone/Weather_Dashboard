@@ -17,10 +17,13 @@
             <hr class="my-4">
         </div>
         <div class = "searchContainer" id="searchQuick">
-            <div class = "searchText">Enter a city name below to get the weather:</div>
-            <textarea class="searchFill" placeholder= "Type City Here"></textarea>
-            <br>
-            <button class="searchBtn" id="searchBtn">Get My Weather</button>
+            <h6 class = "searchText">Search by City</h6>
+            <form id="user-form" class="card-Body">
+                <label class="form-label" for= "city-name">City Name</label>
+                <input name="city-name" id="city-name" type="text" autofocus="true" class="form-input" placeholder = "Type Here" />
+                <br>
+                <button class="searchBtn" id="searchBtn">Get My Weather</button>
+            </form>
             <br>
             <div class="quickLinks">
                 <h4>Quick Links</h4>
@@ -38,7 +41,7 @@
             </div>
         </div>  
             <div class="weatherDisplay" id="targetCityWeather">
-                <h3>Current City</h3>
+                <h3>Current City <i class="weatherIcon"></i></h3>
                 <h5>Current Date</h5>
                     <div class="temprature" id="targetDetails">Temprature: <span></span></div>
                     <div class="humidity" id="targetDetails">Local Humidity:<span></span></div>
@@ -50,31 +53,31 @@
                 <div class="forecastContainer" id="forecastContainer">
                     <div class="forecastA" id="fiveDay">
                         <p class="date">Date<span></span></p>
-                        <p class="icon">Icon<span></span></p>
+                        <i class="icon">Icon<span></span></i>
                         <p class="temp">Temp:<span></span></p>
                         <p class="humidity2">Humidity:<span></span></p>
                     </div>
                     <div class="forecastB" id="fiveDay">
                         <p class="date">Date<span></span></p>
-                        <p class="icon">Icon<span></span></p>
+                        <i class="icon">Icon<span></span></i>
                         <p class="temp">Temp:<span></span></p>
                         <p class="humidity2">Humidty:<span></span></p>
                     </div>
                     <div class="forecastC" id="fiveDay">
                         <p class="date">Date<span></span></p>
-                        <p class="icon">Icon<span></span></p>
+                        <i class="icon">Icon<span></span></i>
                         <p class="temp">Temp:<span></span></p>
                         <p class="humidity2">Humidity:<span></span></p>
                     </div>
                     <div class="forecastD" id="fiveDay">
                         <p class="date">Date<span></span></p>
-                        <p class="icon">Icon<span></span></p>
+                        <i class="icon">Icon<span></span></i>
                         <p class="temp">Temp:<span></span></p>
                         <p class="humidity2">Humidity:<span></span></p>
                     </div>
                     <div class="forecastE" id="fiveDay">
                         <p class="date">Date<span></span></p>
-                        <p class="icon">Icon<span></span></p>
+                        <i class="icon">Icon<span></span></i>
                         <p class="temp">Temp:<span></span></p>
                         <p class="humidity2">Humidity:<span></span></p>
                     </div>

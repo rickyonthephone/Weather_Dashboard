@@ -1,7 +1,11 @@
 .jumbotron {
     text-align: center;
-    background-color: skyblue;
+    background-image: linear-gradient(to bottom right, skyblue, white, lightslategray);
     width: 100%;
+}
+
+body {
+    background-color: rgb(225, 226, 228);
 }
 
 h1 {
@@ -17,15 +21,20 @@ h1 {
     font-size: 20px;
 }
 
-.searchFill {
-    width:374px;
-    border-radius: 5px;
-    height:30px;
-}
-
 .searchBtn {
     border-radius: 5px;
     margin-top: 5px;
+    box-shadow: 3px 3px 3px lightslategray;
+}
+
+.searchBtn:hover {
+    font-weight: 700;
+}
+
+.form-input {
+    border-radius: 5px;
+    border-style: solid;
+    box-shadow: 3px 3px 3px lightslategray;
 }
 
 .quickLinks {
@@ -34,6 +43,7 @@ h1 {
     border-width: 1px;
     border-color: lightslategray;
     border-radius: 5px;
+    box-shadow: 3px 3px 3px lightslategray;
     width: 160px;
     background-color: rgb(144, 238, 207);
 }
@@ -48,11 +58,18 @@ h4 {
     border-radius: 5px;
     margin-left:10px;
     margin-right:10px;
+    box-shadow: 3px 3px black;
 }
 
+#quickCityBtn:hover {
+    transition: all .3s ease-in-out;
+    background-color: rgb(238, 192, 192);
+    font-weight: 700;
+} 
 
 .weatherDisplay {
     float:right;
+    background-color: whitesmoke;
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
@@ -62,6 +79,7 @@ h4 {
     margin-left: 10px;
     width: 700px;
     display: block;
+    box-shadow: 3px 3px 3px lightslategray;
 }
 
 h3, h5, #targetDetails {
@@ -117,6 +135,7 @@ h3, h5, #targetDetails {
     border-color: lightslategray;
     border-width: 1px;
     border-radius: 5px;
+    box-shadow: 3px 3px 3px lightslategray;
     text-align: center;
     background-color: skyblue;
     color:white;
