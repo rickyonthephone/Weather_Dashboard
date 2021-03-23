@@ -1,10 +1,7 @@
-.container-fluid {
-    width: 100%;
-}
-
 .jumbotron {
     text-align: center;
     background-color: skyblue;
+    width: 100%;
 }
 
 h1 {
@@ -12,7 +9,7 @@ h1 {
 }
 
 .searchContainer {
-    margin-left:15px;
+    margin-left:40px;
     float:left;
 }
 
@@ -36,6 +33,7 @@ h1 {
     border-style: solid;
     border-width: 1px;
     border-color: lightslategray;
+    border-radius: 5px;
     width: 160px;
     background-color: rgb(144, 238, 207);
 }
@@ -52,15 +50,20 @@ h4 {
     margin-right:10px;
 }
 
+
 .weatherDisplay {
     float:right;
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
-    width: 70%;
     text-align: left;
-  
+    margin-top: 10px;
+    margin-right: 200px;
+    margin-left: 10px;
+    width: 700px;
+    display: block;
 }
+
 h3, h5, #targetDetails {
     margin-left: 10px;
 }
@@ -74,18 +77,16 @@ h3, h5, #targetDetails {
 }
 .fiveDayForecast {
     float:right;
-    width: 70%;
     text-align: left;
     margin-top: 10px;
+    margin-right:200px;
+    margin-left: 10px;
+    width:700px;
+
 }
 
 .forecastContainer {
     display:flex;
-    margin-left:10px;
-}
-
-#fiveDay {
-    margin-right: 75px;
 }
 
 .date {
@@ -104,15 +105,34 @@ h3, h5, #targetDetails {
 }
 
 
+#fiveDay {
+    margin-right: 30px;
+    
+}
 
 .forecastA, .forecastB,
 .forecastC, .forecastD,
 .forecastE {
     border-style: solid;
+    border-color: lightslategray;
     border-width: 1px;
     border-radius: 5px;
-    width: 250px;
     text-align: center;
     background-color: skyblue;
     color:white;
+    font-size: small;
+    min-width:150px;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 940px) {
+    .weatherDisplay, .fiveDayForecast, .forecastContainer {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .forecastContainer {
+        flex-direction: column;
+    }
 }
