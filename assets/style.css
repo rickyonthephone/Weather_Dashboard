@@ -44,7 +44,7 @@ h1 {
     border-color: lightslategray;
     border-radius: 5px;
     box-shadow: 3px 3px 3px lightslategray;
-    width: 160px;
+    width: 220px;
     background-color: rgb(144, 238, 207);
 }
 
@@ -53,7 +53,7 @@ h4 {
 }
 #quickCityBtn {
     display:Block;
-    width:140px;
+    width:200px;
     margin-bottom: 5px;
     border-radius: 5px;
     margin-left:10px;
@@ -80,6 +80,10 @@ h4 {
     width: 700px;
     display: block;
     box-shadow: 3px 3px 3px lightslategray;
+}
+
+.weatherIcon {
+    margin-left: 15px;
 }
 
 h3, h5, #targetDetails {
