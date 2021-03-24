@@ -1,7 +1,17 @@
+* {
+    box-sizing : border-box;
+    -moz-box-sizing : border-box;
+    margin: 0;
+    padding: 0;
+}
+
 .jumbotron {
     text-align: center;
     background-image: linear-gradient(to bottom right, skyblue, white, lightslategray);
     width: 100%;
+    display: inline-flex;
+    flex-direction:column;
+    height:150px;
 }
 
 body {
@@ -15,6 +25,7 @@ h1 {
 .searchContainer {
     margin-left:40px;
     float:left;
+    margin-top: 15px;
 }
 
 .searchText {
@@ -25,6 +36,9 @@ h1 {
     border-radius: 5px;
     margin-top: 5px;
     box-shadow: 3px 3px 3px lightslategray;
+    border-color: black;
+    border-width: 1px;
+    width:125px;
 }
 
 .searchBtn:hover {
@@ -67,19 +81,23 @@ h4 {
     font-weight: 700;
 } 
 
+.wrapper {
+    float:;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 200px;
+}
+
 .weatherDisplay {
-    float:right;
     background-color: whitesmoke;
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
     text-align: left;
     margin-top: 10px;
-    margin-right: 200px;
-    margin-left: 10px;
-    width: 700px;
-    display: block;
     box-shadow: 3px 3px 3px lightslategray;
+    width: 61%;
 }
 
 .weatherIcon {
@@ -98,17 +116,14 @@ h3, h5, #targetDetails {
     margin-top:10px;
 }
 .fiveDayForecast {
-    float:right;
     text-align: left;
     margin-top: 10px;
-    margin-right:200px;
-    margin-left: 10px;
-    width:700px;
 
 }
 
 .forecastContainer {
     display:flex;
+    flex-wrap: wrap;
 }
 
 .date {
@@ -146,17 +161,20 @@ h3, h5, #targetDetails {
     color:white;
     font-size: small;
     min-width:150px;
-    flex-direction: column;
 }
 
-@media screen and (max-width: 940px) {
-    .weatherDisplay, .fiveDayForecast, .forecastContainer {
-        width: 50%;
+
+
+@media screen and (max-width: 1000px) {
+    .wrapper {
+        padding-left: 50px;
     }
 }
 
-@media screen and (max-width: 940px) {
-    .forecastContainer {
+@media screen and (max-width: 780px) {
+    .wrapper {
         flex-direction: column;
+        padding-left: 40px;
+        float: left;
     }
 }
