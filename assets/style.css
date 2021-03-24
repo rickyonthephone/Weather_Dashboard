@@ -120,6 +120,7 @@ h3, h5, #targetDetails {
 .temp {
     text-align: left;
     margin-left:5px;
+    margin-top: 20px;
 }
 
 
@@ -146,7 +147,7 @@ h3, h5, #targetDetails {
 
 @media screen and (max-width: 940px) {
     .weatherDisplay, .fiveDayForecast, .forecastContainer {
-        width: 60%;
+        width: 50%;
     }
 }
 
