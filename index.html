@@ -31,13 +31,13 @@
         </div>
             <div class= "wrapper">
                 <div class="weatherDisplay" id="targetCityWeather">
-                    <h3 class = "currentCity"></h3>
-                    <i class="weatherIcon"></i>
-                    <h5 class = "currentDate"></h5>
-                        <div id="temprature" class="targetDetails">Temprature: <span class = "currentTemp"></span></div>
-                        <div id="humidity" class="targetDetails">Local Humidity:<span class = "currentHumid"></span></div>
-                        <div id="windSpeed" class="targetDetails">Local Wind Speed:<span class = "currentWind"></span></div>
-                        <div id="uvIndex" class="targetDetails">UV Index:<span class = "currentUv"></span></div>
+                    <h3 id = "currentCity">Current City</h3>
+                    <i id="weatherIcon">Icon</i>
+                    <h5 id = "today"><span id= "currentDate"></span></h5>
+                        <div id="currentTemprature" class="targetDetails">Temprature: <span id = "currentTemp"></span></div>
+                        <div id="currentHumidity" class="targetDetails">Local Humidity:<span id = "currentHumid"></span></div>
+                        <div id="currentWindSpeed" class="targetDetails">Local Wind Speed:<span id = "currentWind"></span></div>
+                        <div id="currentUvIndex" class="targetDetails">UV Index:<span class = "currentUv"></span></div>
                 </div>
                 <div class="fiveDayForecast" id="fiveDayForecast">
                 <h3>Your 5 Day Forecast</h3> 
@@ -45,14 +45,14 @@
                         <div class="forecastA" id="fiveDay">
                             <p>Date<span class = "dateA"></span></p>
                             <i<span class = "dateAIcon">Icon</span></i>
-                            <p class="temp">Temp:<span class = "dateATemp"></span></p>
-                            <p class="humidity2">Humidity:<span class="dateAHumid"></span></p>
+                            <p class="temp">Temp:<span id = "dateATemp"></span></p>
+                            <p class="humidity2">Humidity:<span id = "dateAHumid"></span></p>
                         </div>
                         <div class="forecastB" id="fiveDay">
                             <p>Date<span class = "dateB"></span></p>
                             <i<span class = "dateBIcon">Icon</span></i>
-                            <p class="temp">Temp:<span class = "dateBTemp"></span></p>
-                            <p class="humidity2">Humidty:<span class = "dateBHumid"></span></p>
+                            <p class="temp">Temp:<span id = "dateBTemp"></span></p>
+                            <p class="humidity2">Humidty:<span id = "dateBHumid"></span></p>
                         </div>
                         <div class="forecastC" id="fiveDay">
                             <p>Date<span class = "dateC"></span></p>

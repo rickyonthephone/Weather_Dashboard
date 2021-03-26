@@ -22,11 +22,11 @@ function searchCity(searchEvent) {
 
 //function to fetch weather data for current day weather from API based
 //on user form input
-function getUserWeather(name) {
-  console.log("Searching for city " + name);
+function getUserWeather(cityName) {
+  console.log("Searching for city " + cityName);
 
 //Take above parameter to build URL string
-  var apiURL =`http://api.openweathermap.org/data/2.5/weather?q=${name}&appid=0642f62247cd5fc4b4b2603fcde8ec95&units=imperial`;
+  var apiURL =`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=0642f62247cd5fc4b4b2603fcde8ec95&units=imperial`;
   
 //make API call
   fetch(apiURL)
@@ -35,12 +35,23 @@ function getUserWeather(name) {
     })
     .then((data) => {
       console.log(data);
+      const {name} = data
+      const {temp, humidity} = data.main
+      const {icon} = data.weather
+      const {speed} = data.wind
+      var date = moment(data.dt).format("M.DD.YYYY")
+      console.log(name, temp, humidity, icon, speed, date);
+      //Change elements using data
+      currentTemp.textContent = temp;
+      currentWind.textContent = speed;
+      currentHumid.textContent = humidity+'%';
+      currentDate.textContent = dt; 
       
 //create button for history
       var btn = document.createElement("button");
       
       btn.classList = "historyCityBtn";
-      btn.textContent = name;
+      btn.textContent = cityName;
 
       var cities = JSON.parse(localStorage.getItem("cities"));
       if (!cities) {
