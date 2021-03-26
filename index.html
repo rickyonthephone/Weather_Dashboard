@@ -25,29 +25,19 @@
                 <button class="searchBtn" id="searchBtn">Get My Weather</button>
             </form>
             <br>
-            <div class="quickLinks">
-                <h4 id="history">Quick Links</h4>
-                    <!-- <button id="quickCityBtn" class = "atlanta">Atlanta, GA</button>
-                    <button id="quickCityBtn" class = "newYork">New York, NY</button>
-                    <button id="quickCityBtn" class = "losAngeles">Los Angeles, CA</button>
-                    <button id="quickCityBtn" class = "seattle">Seattle, WA</button>
-                    <button id="quickCityBtn" class = "boston">Boston, MA</button>
-                    <button id="quickCityBtn" class = "chicago">Chicago, IL</button>
-                    <button id="quickCityBtn" class = "dallas">Dallas, TX</button>
-                    <button id="quickCityBtn" class = "detroit">Detroit, MI</button>
-                    <button id="quickCityBtn" class = "sanFrancisco">San Francisco, CA</button>
-                    <button id="quickCityBtn" class = "miami">Miami, FL</button>
-                    <button id="quickCityBtn" class = "washingtonDc">Washington D.C.</button> -->
+            <div class="historyLinks">
+                <h4 id="history"></h4>
             </div>
         </div>
             <div class= "wrapper">
                 <div class="weatherDisplay" id="targetCityWeather">
-                    <h3>Current City <i class="weatherIcon">Icon</i></h3>
-                    <h5>Current Date</h5>
-                        <div class="temprature" id="targetDetails">Temprature: <span class = "currentTemp"></span></div>
-                        <div class="humidity" id="targetDetails">Local Humidity:<span class = "currentHumid"></span></div>
-                        <div class="windSpeed" id="targetDetails">Local Wind Speed:<span class = "currentWind"></span></div>
-                        <div class="uvIndex" id="targetDetails">UV Index:<span class = "currentUv"></span></div>
+                    <h3 class = "currentCity"></h3>
+                    <i class="weatherIcon"></i>
+                    <h5 class = "currentDate"></h5>
+                        <div id="temprature" class="targetDetails">Temprature: <span class = "currentTemp"></span></div>
+                        <div id="humidity" class="targetDetails">Local Humidity:<span class = "currentHumid"></span></div>
+                        <div id="windSpeed" class="targetDetails">Local Wind Speed:<span class = "currentWind"></span></div>
+                        <div id="uvIndex" class="targetDetails">UV Index:<span class = "currentUv"></span></div>
                 </div>
                 <div class="fiveDayForecast" id="fiveDayForecast">
                 <h3>Your 5 Day Forecast</h3> 
@@ -85,6 +75,7 @@
                     </div>
                 </div>
             </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="assets/script.js"></script>
     </body>
 </html>
