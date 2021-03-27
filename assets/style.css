@@ -156,14 +156,14 @@ h3, h5, #targetDetails {
 }
 
 
-#fiveDay {
+.fiveDay {
     margin-right: 30px;
     
 }
 
-.forecastA, .forecastB,
-.forecastC, .forecastD,
-.forecastE {
+#forecastA, #forecastB,
+#forecastC, #forecastD,
+#forecastE {
     border-style: solid;
     border-color: lightslategray;
     border-width: 1px;

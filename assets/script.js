@@ -72,6 +72,7 @@ function getUserWeather(cityName) {
 
 }
 
+//call to get 5 day forecast features
 function get5day(lat, lon) {
     var apiURL =
     `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=0642f62247cd5fc4b4b2603fcde8ec95&units=imperial`;
@@ -84,14 +85,15 @@ function get5day(lat, lon) {
     .then((data) => {
       console.log(data);
 
-
+//loop for getting info from indicies 1 - 5. Index 0 appears to have current day data.
+//this is where I am running into problems and I think I'm starting to go in circles. 
       for (index = 1; index < 6; index++) {
           var day = data.daily[index];
           var forecastDate = new Date(day.dt*1000);
           // var dt = forecastDate;
           // const{dt} = data.daily[index].dt;
           // console.log(dt);
-          const {max} = data.daily[index].temp;
+          const {max} = day.temp;
           const {dt} = forecastDate;
           const {humidity} = day;
           console.log(max) 
@@ -100,12 +102,12 @@ function get5day(lat, lon) {
           console.log(day.dt);
           console.log(dt);
           console.log(forecastDate);
-          console.log(day.weather.icon)
-          console.log(day.temp.max)
-          console.log(day.humidity)
-          console.log(day.uvi)
+          console.log(day.weather.icon);
+          console.log(day.temp.max);
+          console.log(day.humidity);
+          console.log(day.uvi);
 
-          dateATemp.textContent = max
+          dateATemp.textContent = max[1];
       }
       
       
