@@ -1,10 +1,13 @@
 //Declaration of variables for form input
+const key = '0642f62247cd5fc4b4b2603fcde8ec95'
 var userFormEl = document.getElementById("user-form");
 var userCityNameEl = document.getElementById("city-name");
 var searchBtnEl = document.getElementById("searchBtn");
 var citySelect = userCityNameEl.value.trim();
 var historyLinks = document.getElementById("history");
 var currentCity = document.getElementById("currentCity")
+var today = moment().format("MMM Do YYYY");
+
 //Prevent default on seach button
 function searchCity(searchEvent) {
   searchEvent.preventDefault();
@@ -26,8 +29,7 @@ function getUserWeather(cityName) {
   console.log("Searching for city " + cityName);
 
 //Take above parameter to build URL string
-  var apiURL =`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=0642f62247cd5fc4b4b2603fcde8ec95&units=imperial`;
-  
+  var apiURL =`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&units=imperial`;
 //make API call
   fetch(apiURL)
     .then((response) => {
@@ -35,17 +37,15 @@ function getUserWeather(cityName) {
     })
     .then((data) => {
       console.log(data);
-      const {name} = data
       const {temp, humidity} = data.main
-      const {icon} = data.weather
       const {speed} = data.wind
-      var date = moment(data.dt).format("M.DD.YYYY")
-      console.log(name, temp, humidity, icon, speed, date);
-      //Change elements using data
-      currentTemp.textContent = temp;
-      currentWind.textContent = speed;
-      currentHumid.textContent = humidity+'%';
-      currentDate.textContent = dt; 
+      console.log(temp, humidity, speed);
+//Change current weather elements using data
+      currentCity.textContent = cityName;
+      currentTemp.textContent = temp +" °F";
+      currentWind.textContent = speed+" mph";
+      currentHumid.textContent = humidity+" %";
+      currentDate.textContent = today; 
       
 //create button for history
       var btn = document.createElement("button");
@@ -57,7 +57,7 @@ function getUserWeather(cityName) {
       if (!cities) {
         cities = [];
       }
-      cities.push(name);
+      cities.push(cityName);
       localStorage.setItem("cities", JSON.stringify(cities));
 
       historyLinks.appendChild(btn);
@@ -81,7 +81,7 @@ function get5day(lat, lon) {
     .then((data) => {
       console.log(data);
 
-      for (let index = 0; index < 5; index++) {
+      for (index = 0; index < 5; index++) {
           var day = data.daily[index];
           var date = moment(data.dt).format("M.DD.YYYY");
           console.log(date);
@@ -91,14 +91,7 @@ function get5day(lat, lon) {
       }
       
     });
-  /**
-     *       <div class="forecastA" id="fiveDay">
-         <p>Date<span class = "dateA"></span></p>
-        <i<span class = "dateAIcon">Icon</span></i>
-    <p class="temp">Temp:<span class = "dateATemp"></span></p>
-<p class="humidity2">Humidity:<span class="dateAHumid"></span></p>
-            </div>
-     */
+
 }
 
 //funciton to access local storage so history buttons will show weather
@@ -115,9 +108,6 @@ function getItems() {
   }
 }
 
-function currentWeather (name) {
-
-}
 
 //search for city based on form input
 searchBtn.addEventListener("click", searchCity);

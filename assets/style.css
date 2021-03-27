@@ -95,6 +95,23 @@ h4 {
     width: 61%;
 }
 
+.targetDetails {
+    margin-left: 15px;
+    font-size: 20px;
+}
+ 
+#currentTemp, #currentHumid,
+#currentWind,#currentUv {
+    margin-left: 8px;
+    font-size: 17px; 
+    margin-right: 3px;
+}
+
+.units {
+    margin-left:2px;
+    font-size: 17px;
+}
+
 .weatherIcon {
     margin-left: 15px;
 }
