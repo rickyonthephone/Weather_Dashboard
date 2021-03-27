@@ -43,6 +43,7 @@ function getUserWeather(cityName) {
       console.log(temp, humidity, icon, speed);
 //Change current weather elements using data
       currentCity.textContent = cityName;
+      weatherIcon.textContent = icon;
       currentTemp.textContent = temp +" °F";
       currentWind.textContent = speed+" mph";
       currentHumid.textContent = humidity+" %";

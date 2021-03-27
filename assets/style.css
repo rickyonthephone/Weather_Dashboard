@@ -9,9 +9,10 @@
     text-align: center;
     background-image: linear-gradient(to bottom right, skyblue, white, lightslategray);
     width: 100%;
-    display: inline-flex;
+    display: flex;
     flex-direction:column;
-    height:150px;
+    max-height:200px;
+    min-width: 350px;
 }
 
 body {
@@ -100,8 +101,8 @@ h4 {
     font-size: 20px;
 }
  
-#currentTemp, #currentHumid,
-#currentWind,#currentUv {
+#currentTemp, #weatherIcon, #currentHumid,
+#currentWind, #currentUv {
     margin-left: 8px;
     font-size: 17px; 
     margin-right: 3px;
