@@ -8,7 +8,8 @@
 
  Github page: https://rickyonthephone.github.io/Weather_Dashboard/
 
- Screenshot: ![screenshot]()
+ Screenshot: ![screenshot](https://github.com/rickyonthephone/Weather_Dashboard/blob/master/assets/Screen%20Shot%202021-03-27%20at%2011.49.57%20AM.png)
+ 
 
 ## How to Start
 
