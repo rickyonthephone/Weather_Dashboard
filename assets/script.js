@@ -38,8 +38,9 @@ function getUserWeather(cityName) {
     .then((data) => {
       console.log(data);
       const {temp, humidity} = data.main
+      const {icon} = data.weather[0];
       const {speed} = data.wind
-      console.log(temp, humidity, speed);
+      console.log(temp, humidity, icon, speed);
 //Change current weather elements using data
       currentCity.textContent = cityName;
       currentTemp.textContent = temp +" °F";
