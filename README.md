@@ -4,9 +4,9 @@
 
  Build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS using the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities and use `localStorage` to store any persistent data.
 
- Github code:
+ Github code: https://github.com/rickyonthephone/Weather_Dashboard
 
- Github page:
+ Github page: https://rickyonthephone.github.io/Weather_Dashboard/
 
  Screenshot: ![screenshot]()
 
