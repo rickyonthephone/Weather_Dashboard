@@ -37,18 +37,19 @@ function getUserWeather(cityName) {
     })
     .then((data) => {
       console.log(data);
+//extract needed data from the response
       const {temp, humidity} = data.main
       const {icon} = data.weather[0];
       const {speed} = data.wind
       console.log(temp, humidity, icon, speed);
-//Change current weather elements using data
+//Change current weather elements using data extract from response
       currentCity.textContent = cityName;
       weatherIcon.textContent = icon;
       currentTemp.textContent = temp +" °F";
       currentWind.textContent = speed+" mph";
       currentHumid.textContent = humidity+" %";
+    //currentUv.textContent = getUvIndex()
       currentDate.textContent = today; 
-      
 //create button for history
       var btn = document.createElement("button");
       
@@ -83,18 +84,34 @@ function get5day(lat, lon) {
     .then((data) => {
       console.log(data);
 
-      for (index = 0; index < 5; index++) {
+
+      for (index = 1; index < 6; index++) {
           var day = data.daily[index];
-          var date = moment(data.dt).format("M.DD.YYYY");
-          console.log(date);
+          var forecastDate = new Date(day.dt*1000);
+          // var dt = forecastDate;
+          // const{dt} = data.daily[index].dt;
+          // console.log(dt);
+          const {max} = data.daily[index].temp;
+          const {dt} = forecastDate;
+          const {humidity} = day;
+          console.log(max) 
+          // var date = moment.utc().format();
+          // console.log(date);
+          console.log(day.dt);
+          console.log(dt);
+          console.log(forecastDate);
           console.log(day.weather.icon)
           console.log(day.temp.max)
           console.log(day.humidity)
+          console.log(day.uvi)
+
+          dateATemp.textContent = max
       }
       
-    });
-
-}
+      
+    
+    }
+  )};
 
 //funciton to access local storage so history buttons will show weather
 function getItems() {
