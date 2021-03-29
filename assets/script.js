@@ -87,27 +87,19 @@ function get5day(lat, lon) {
 
 //loop for getting info from indicies 1 - 5. Index 0 appears to have current day data.
 //this is where I am running into problems and I think I'm starting to go in circles. 
-      for (index = 1; index < 6; index++) {
-          var day = data.daily[index];
-          var forecastDate = new Date(day.dt*1000);
-          // var dt = forecastDate;
-          // const{dt} = data.daily[index].dt;
-          // console.log(dt);
-          const {max} = day.temp;
-          const {dt} = forecastDate;
-          const {humidity} = day;
-          console.log(max) 
-          // var date = moment.utc().format();
-          // console.log(date);
-          console.log(day.dt);
-          console.log(dt);
-          console.log(forecastDate);
-          console.log(day.weather.icon);
-          console.log(day.temp.max);
-          console.log(day.humidity);
-          console.log(day.uvi);
 
-          dateATemp.textContent = max[1];
+      for (index = 1; index < 6; index++) {
+        var day = data.daily[index];
+        var forecastDate = new Date(day.dt*1000);
+        var humidity = data.daily[index].humidity;
+        var icon = data.daily[index].weather[0].icon;
+        var temp = data.daily[index].temp.max;
+        
+        console.log(forecastDate);
+        console.log(icon);
+        console.log(temp);
+        console.log(humidity);
+        
       }
       
       
