@@ -9,6 +9,8 @@ var currentCity = document.getElementById("currentCity")
 var today = moment().format("MMM Do, YYYY");
 var targetCityWeatherEl = document.getElementById("targetCityWeather");
 var weatherIconEl = document.getElementById("weatherIcon");
+var uvIndexEL = document.getElementById("currentUvIndex");
+var allDates = document.querySelectorAll(".fiveDay");
 
 var dateAEl = document.getElementById("dateA");
 var dateBEl = document.getElementById("dateB");
@@ -44,7 +46,7 @@ function searchCity(searchEvent) {
 //Require user to type in a city name
   if (citySelect) {
     getUserWeather(citySelect);
-    console.log("I have city " + citySelect);
+
   } else {
     alert("City name is required to search.");
   }
@@ -53,7 +55,7 @@ function searchCity(searchEvent) {
 //function to fetch weather data for current day weather from API based
 //on user form input
 function getUserWeather(cityName) {
-  console.log("Searching for city " + cityName);
+
 
 //Take above parameter to build URL string
   var apiURL =`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&units=imperial`;
@@ -63,23 +65,24 @@ function getUserWeather(cityName) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+
 //extract needed data from the response
-      const {temp, humidity} = data.main
+      const {temp} = data.main
+      const {humidity} = data.main
       const {icon} = data.weather[0];
       const {speed} = data.wind
 
+      weatherIconEl.innerHTML = "";
       var weatherIcon = document.createElement("img");
       weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
       weatherIconEl.appendChild(weatherIcon);
 
-      console.log(weatherIcon);
-      console.log(temp, humidity, icon, speed);
+
 //Change current weather elements using data extract from response
       currentCity.textContent = cityName;
       //need to get icon to insert vs. icon code.
-      // weatherIcon.textContent = icon;
-      currentTemp.textContent = temp +" °F";
+      weatherIcon.textContent = icon;
+      currentTemp.textContent = temp+" °F";
       currentWind.textContent = speed+" mph";
       currentHumid.textContent = humidity+" %";
     //currentUv.textContent = getUvIndex()
@@ -102,6 +105,7 @@ function getUserWeather(cityName) {
 //passing lat and lon coordinates so next function/API call can get the 
 //5 day forecast - previous call only provided current weather data.
       get5day(data.coord.lat, data.coord.lon)
+      
     });
 
 }
@@ -118,6 +122,13 @@ function get5day(lat, lon) {
     })
     .then((data) => {
       console.log(data);
+      var uvIndex = parseFloat(data.current.uvi);
+      uvIndexEL.textContent = "UV Index: "+ uvIndex;
+
+      if(uvIndex < 3){
+        uvIndexEL.setAttribute("style", "background-color: green");
+      }
+
 
 //5 day forecast loop for getting info from indicies 1 - 5. Index 0 appears to have current day data.
 //this is where I am running into problems and I think I'm starting to go in circles. 
@@ -127,37 +138,65 @@ function get5day(lat, lon) {
         var forecastDate = moment.unix(day.dt).format("MM DD, YYYY");
         var humidity = day.humidity;
         var icon = day.weather[0].icon;
-        var temp = day.temp.max;
+        var temp = parseFloat(day.temp.max);
+        temp = Math.ceil(temp)
+        //empties the entire div of elements
+        allDates[index-1].innerHTML = "";
+        var p = document.createElement("p");
+        var p2 = document.createElement("p");
+        var p3 = document.createElement("p");
+        var p4 = document.createElement("p");
+        p.textContent = moment.unix(data.daily[index].dt).format("MM DD, YYYY");
 
-        console.log(forecastDate);
-        console.log(icon);
-        console.log(temp);
-        console.log(humidity);
+        allDates[index-1].appendChild(p);
+
+        p2.textContent = data.daily[index].weather[0].icon; 
+
+        allDates[index-1].appendChild(p2);
+
+        p3.textContent = "Temp: "+ temp +" °F"; 
+
+        allDates[index-1].appendChild(p3);
+
+        p4.textContent = "Humidity: "+ data.daily[index].humidity + " %"; 
+
+        allDates[index-1].appendChild(p4);
+
+
+        //console.log(allDates[index-1].childNodes) remember you can also loop through the childNodes as a for-lop
+        //to do that it would be alldates[index-1].childNodes[0] <- this would give the first child in the fiveDay element
         
-        dateA.innerText = moment.unix(data.daily[1].dt).format("MM DD, YYYY");
-        dateB.innerHTML = moment.unix(data.daily[2].dt).format("MM DD, YYYY");
-        dateC.innerHTML = moment.unix(data.daily[3].dt).format("MM DD, YYYY");
-        dateD.innerHTML = moment.unix(data.daily[4].dt).format("MM DD, YYYY");
-        dateE.innerHTML = moment.unix(data.daily[5].dt).format("MM DD, YYYY");
+        //allDates[index-1].innerHTML = moment.unix(data.daily[index].dt).format("MM DD, YYYY");
+        //allDates[index-1].innerHTML = data.daily[index].weather[0].icon; 
+        //allDates[index-1].innerHTML = data.daily[index].temp.max +" °F"; 
+        //allDates[index-1].innerHTML = data.daily[index].humidity + " %"; 
+
+        // dateA.innerText = moment.unix(data.daily[1].dt).format("MM DD, YYYY");
+        // dateB.innerHTML = moment.unix(data.daily[2].dt).format("MM DD, YYYY");
+        // dateC.innerHTML = moment.unix(data.daily[3].dt).format("MM DD, YYYY");
+        // dateD.innerHTML = moment.unix(data.daily[4].dt).format("MM DD, YYYY");
+        // dateE.innerHTML = moment.unix(data.daily[5].dt).format("MM DD, YYYY");
         
-        //need to figure out how to insert icons instead of icon code.
-        dateAIcon.innerHTML = data.daily[1].weather[0].icon; 
-        dateBIcon.innerHTML = data.daily[2].weather[0].icon;
-        dateCIcon.innerHTML = data.daily[3].weather[0].icon;
-        dateDIcon.innerHTML = data.daily[4].weather[0].icon;
-        dateEIcon.innerHTML = data.daily[5].weather[0].icon;
+        // //need to figure out how to insert icons instead of icon code.
+        // dateAIcon.innerHTML = data.daily[1].weather[0].icon; 
+        // dateBIcon.innerHTML = data.daily[2].weather[0].icon;
+        // dateCIcon.innerHTML = data.daily[3].weather[0].icon;
+        // dateDIcon.innerHTML = data.daily[4].weather[0].icon;
+        // dateEIcon.innerHTML = data.daily[5].weather[0].icon;
 
-        dateATemp.innerHTML = data.daily[1].temp.max +" °F"; 
-        dateBTemp.innerHTML = data.daily[2].temp.max +" °F";
-        dateCTemp.innerHTML = data.daily[3].temp.max +" °F";
-        dateDTemp.innerHTML = data.daily[4].temp.max +" °F";
-        dateETemp.innerHTML = data.daily[5].temp.max +" °F";
+        // dateATemp.innerHTML = data.daily[1].temp.max +" °F"; 
+        // dateBTemp.innerHTML = data.daily[2].temp.max +" °F";
+        // dateCTemp.innerHTML = data.daily[3].temp.max +" °F";
+        // dateDTemp.innerHTML = data.daily[4].temp.max +" °F";
+        // dateETemp.innerHTML = data.daily[5].temp.max +" °F";
 
-        dateAHumid.innerHTML = data.daily[1].humidity + " %"; 
-        dateBHumid.innerHTML = data.daily[2].humidity + " %";
-        dateCHumid.innerHTML = data.daily[3].humidity + " %";
-        dateDHumid.innerHTML = data.daily[4].humidity + " %";
-        dateEHumid.innerHTML = data.daily[5].humidity + " %";
+        // dateAHumid.innerHTML = data.daily[1].humidity + " %"; 
+        // dateBHumid.innerHTML = data.daily[2].humidity + " %";
+        // dateCHumid.innerHTML = data.daily[3].humidity + " %";
+        // dateDHumid.innerHTML = data.daily[4].humidity + " %";
+        // dateEHumid.innerHTML = data.daily[5].humidity + " %";
+
+
         
       }
 
@@ -191,7 +230,7 @@ getItems();
 historyLinks.addEventListener("click", function(event){
     var cityName = event.target.textContent;
 
-    console.log(event.target);
+
 
     getUserWeather(cityName);
 })

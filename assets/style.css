@@ -130,7 +130,7 @@ h4 {
     margin-left: 15px;
     height:100px;
     width: 100px;
-    display: block;
+    display: flex;
 }
 
 h3, h5, #targetDetails {
