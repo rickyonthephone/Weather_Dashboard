@@ -69,6 +69,7 @@ function getUserWeather(cityName) {
       console.log(temp, humidity, icon, speed);
 //Change current weather elements using data extract from response
       currentCity.textContent = cityName;
+      //need to get icon to insert vs. icon code.
       weatherIcon.textContent = icon;
       currentTemp.textContent = temp +" °F";
       currentWind.textContent = speed+" mph";
@@ -131,6 +132,7 @@ function get5day(lat, lon) {
         dateD.innerHTML = moment.unix(data.daily[4].dt).format("MM DD, YYYY");
         dateE.innerHTML = moment.unix(data.daily[5].dt).format("MM DD, YYYY");
         
+        //need to figure out how to insert icons instead of icon code.
         dateAIcon.innerHTML = data.daily[1].weather[0].icon; 
         dateBIcon.innerHTML = data.daily[2].weather[0].icon;
         dateCIcon.innerHTML = data.daily[3].weather[0].icon;
