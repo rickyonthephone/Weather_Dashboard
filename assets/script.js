@@ -7,7 +7,25 @@ var citySelect = userCityNameEl.value.trim();
 var historyLinks = document.getElementById("history");
 var currentCity = document.getElementById("currentCity")
 var today = moment().format("MMM Do YYYY");
+var dateAEl = document.getElementById("dateA");
+var dateBEl = document.getElementById("dateB");
+var dateCEL = document.getElementById("dateC");
+var dateDEL = document.getElementById("dateD");
+var dateEEL = document.getElementById("dateE");
 
+var dateAIconEL = document.getElementById ("dateAIcon");
+var dateBIconEL = document.getElementById ("dateBIcon");
+var dateCIconEL = document.getElementById ("dateCIcon");
+var dateDIconEL = document.getElementById ("dateDIcon");
+var dateEIconEL = document.getElementById ("dateEIcon");
+
+var dateATempEL = document.getElementById ("dateATemp");
+var dateBTempEL = document.getElementById ("dateBTemp");
+var dateCTempEL = document.getElementById ("dateCTemp");
+var dateDTempEL = document.getElementById ("dateDTemp");
+var dateETempEL = document.getElementById ("dateETemp");
+
+var forecastDate = document.getElementById("forecastDate");
 //Prevent default on seach button
 function searchCity(searchEvent) {
   searchEvent.preventDefault();
@@ -90,19 +108,40 @@ function get5day(lat, lon) {
 
       for (index = 1; index < 6; index++) {
         var day = data.daily[index];
-        var forecastDate = new Date(day.dt*1000);
-        var humidity = data.daily[index].humidity;
-        var icon = data.daily[index].weather[0].icon;
-        var temp = data.daily[index].temp.max;
-        
+        var forecastDate = moment.unix(day.dt).format("MM DD, YYYY");
+        var humidity = day.humidity;
+        var icon = day.weather[0].icon;
+        var temp = day.temp.max;
+
         console.log(forecastDate);
         console.log(icon);
         console.log(temp);
         console.log(humidity);
+
+        console.log(forecastDate[2]);
+        
+        dateA.innerHTML = moment.unix(data.daily[1].dt).format("MM DD, YYYY");
+        dateB.innerHTML = moment.unix(data.daily[2].dt).format("MM DD, YYYY");
+        dateC.innerHTML = moment.unix(data.daily[3].dt).format("MM DD, YYYY");
+        dateD.innerHTML = moment.unix(data.daily[4].dt).format("MM DD, YYYY");
+        dateE.innerHTML = moment.unix(data.daily[5].dt).format("MM DD, YYYY");
+        
+        dateAIcon.innerHTML = data.daily[1].weather[0].icon; 
+        dateBIcon.innerHTML = data.daily[2].weather[0].icon;
+        dateCIcon.innerHTML = data.daily[3].weather[0].icon;
+        dateDIcon.innerHTML = data.daily[4].weather[0].icon;
+        dateEIcon.innerHTML = data.daily[5].weather[0].icon;
+
+        dateATemp.innerHTML = data.daily[1].temp.max; 
+        dateBTemp.innerHTML = data.daily[2].temp.max;
+        dateCTemp.innerHTML = data.daily[3].temp.max;
+        dateDTemp.innerHTML = data.daily[4].temp.max;
+        dateETemp.innerHTML = data.daily[5].temp.max;
         
       }
+
       
-      
+       
     
     }
   )};
