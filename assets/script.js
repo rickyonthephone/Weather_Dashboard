@@ -9,21 +9,27 @@ var currentCity = document.getElementById("currentCity")
 var today = moment().format("MMM Do YYYY");
 var dateAEl = document.getElementById("dateA");
 var dateBEl = document.getElementById("dateB");
-var dateCEL = document.getElementById("dateC");
-var dateDEL = document.getElementById("dateD");
-var dateEEL = document.getElementById("dateE");
+var dateCEl = document.getElementById("dateC");
+var dateDEl = document.getElementById("dateD");
+var dateEEl = document.getElementById("dateE");
 
-var dateAIconEL = document.getElementById ("dateAIcon");
-var dateBIconEL = document.getElementById ("dateBIcon");
-var dateCIconEL = document.getElementById ("dateCIcon");
-var dateDIconEL = document.getElementById ("dateDIcon");
-var dateEIconEL = document.getElementById ("dateEIcon");
+var dateAIconEl = document.getElementById ("dateAIcon");
+var dateBIconEl = document.getElementById ("dateBIcon");
+var dateCIconEl = document.getElementById ("dateCIcon");
+var dateDIconEl = document.getElementById ("dateDIcon");
+var dateEIconEl = document.getElementById ("dateEIcon");
 
-var dateATempEL = document.getElementById ("dateATemp");
-var dateBTempEL = document.getElementById ("dateBTemp");
-var dateCTempEL = document.getElementById ("dateCTemp");
-var dateDTempEL = document.getElementById ("dateDTemp");
-var dateETempEL = document.getElementById ("dateETemp");
+var dateATempEl = document.getElementById ("dateATemp");
+var dateBTempEl = document.getElementById ("dateBTemp");
+var dateCTempEl = document.getElementById ("dateCTemp");
+var dateDTempEl = document.getElementById ("dateDTemp");
+var dateETempEl = document.getElementById ("dateETemp");
+
+var dateAHumidEl = document.getElementById ("dateAHumid");
+var dateBHumidEl = document.getElementById ("dateBHumid");
+var dateCHumidEl = document.getElementById ("dateCHumid");
+var dateDHumidEl = document.getElementById ("dateDHumid");
+var dateEHumidEl = document.getElementById ("dateEHumid");
 
 var forecastDate = document.getElementById("forecastDate");
 //Prevent default on seach button
@@ -103,7 +109,7 @@ function get5day(lat, lon) {
     .then((data) => {
       console.log(data);
 
-//loop for getting info from indicies 1 - 5. Index 0 appears to have current day data.
+//5 day forecast loop for getting info from indicies 1 - 5. Index 0 appears to have current day data.
 //this is where I am running into problems and I think I'm starting to go in circles. 
 
       for (index = 1; index < 6; index++) {
@@ -137,6 +143,12 @@ function get5day(lat, lon) {
         dateCTemp.innerHTML = data.daily[3].temp.max;
         dateDTemp.innerHTML = data.daily[4].temp.max;
         dateETemp.innerHTML = data.daily[5].temp.max;
+
+        dateAHumid.innerHTML = data.daily[1].humidity; 
+        dateBHumid.innerHTML = data.daily[2].humidity;
+        dateCHumid.innerHTML = data.daily[3].humidity;
+        dateDHumid.innerHTML = data.daily[4].humidity;
+        dateEHumid.innerHTML = data.daily[5].humidity;
         
       }
 
