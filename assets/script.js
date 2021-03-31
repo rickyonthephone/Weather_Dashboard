@@ -7,6 +7,7 @@ var citySelect = userCityNameEl.value.trim();
 var historyLinks = document.getElementById("history");
 var currentCity = document.getElementById("currentCity")
 var today = moment().format("MMM Do YYYY");
+
 var dateAEl = document.getElementById("dateA");
 var dateBEl = document.getElementById("dateB");
 var dateCEl = document.getElementById("dateC");
@@ -130,7 +131,7 @@ function get5day(lat, lon) {
         dateD.innerHTML = moment.unix(data.daily[4].dt).format("MM DD, YYYY");
         dateE.innerHTML = moment.unix(data.daily[5].dt).format("MM DD, YYYY");
         
-        dateAIcon.textContent = data.daily[1].weather[0].icon; 
+        dateAIcon.innerHTML = data.daily[1].weather[0].icon; 
         dateBIcon.innerHTML = data.daily[2].weather[0].icon;
         dateCIcon.innerHTML = data.daily[3].weather[0].icon;
         dateDIcon.innerHTML = data.daily[4].weather[0].icon;
