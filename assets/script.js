@@ -123,32 +123,30 @@ function get5day(lat, lon) {
         console.log(icon);
         console.log(temp);
         console.log(humidity);
-
-        console.log(forecastDate[2]);
         
-        dateA.innerHTML = moment.unix(data.daily[1].dt).format("MM DD, YYYY");
+        dateA.innerText = moment.unix(data.daily[1].dt).format("MM DD, YYYY");
         dateB.innerHTML = moment.unix(data.daily[2].dt).format("MM DD, YYYY");
         dateC.innerHTML = moment.unix(data.daily[3].dt).format("MM DD, YYYY");
         dateD.innerHTML = moment.unix(data.daily[4].dt).format("MM DD, YYYY");
         dateE.innerHTML = moment.unix(data.daily[5].dt).format("MM DD, YYYY");
         
-        dateAIcon.innerHTML = data.daily[1].weather[0].icon; 
+        dateAIcon.textContent = data.daily[1].weather[0].icon; 
         dateBIcon.innerHTML = data.daily[2].weather[0].icon;
         dateCIcon.innerHTML = data.daily[3].weather[0].icon;
         dateDIcon.innerHTML = data.daily[4].weather[0].icon;
         dateEIcon.innerHTML = data.daily[5].weather[0].icon;
 
-        dateATemp.innerHTML = data.daily[1].temp.max; 
-        dateBTemp.innerHTML = data.daily[2].temp.max;
-        dateCTemp.innerHTML = data.daily[3].temp.max;
-        dateDTemp.innerHTML = data.daily[4].temp.max;
-        dateETemp.innerHTML = data.daily[5].temp.max;
+        dateATemp.innerHTML = data.daily[1].temp.max +" °F"; 
+        dateBTemp.innerHTML = data.daily[2].temp.max +" °F";
+        dateCTemp.innerHTML = data.daily[3].temp.max +" °F";
+        dateDTemp.innerHTML = data.daily[4].temp.max +" °F";
+        dateETemp.innerHTML = data.daily[5].temp.max +" °F";
 
-        dateAHumid.innerHTML = data.daily[1].humidity; 
-        dateBHumid.innerHTML = data.daily[2].humidity;
-        dateCHumid.innerHTML = data.daily[3].humidity;
-        dateDHumid.innerHTML = data.daily[4].humidity;
-        dateEHumid.innerHTML = data.daily[5].humidity;
+        dateAHumid.innerHTML = data.daily[1].humidity + " %"; 
+        dateBHumid.innerHTML = data.daily[2].humidity + " %";
+        dateCHumid.innerHTML = data.daily[3].humidity + " %";
+        dateDHumid.innerHTML = data.daily[4].humidity + " %";
+        dateEHumid.innerHTML = data.daily[5].humidity + " %";
         
       }
 
