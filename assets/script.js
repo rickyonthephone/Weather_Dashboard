@@ -7,6 +7,8 @@ var citySelect = userCityNameEl.value.trim();
 var historyLinks = document.getElementById("history");
 var currentCity = document.getElementById("currentCity")
 var today = moment().format("MMM Do, YYYY");
+var targetCityWeatherEl = document.getElementById("targetCityWeather");
+var weatherIconEl = document.getElementById("weatherIcon");
 
 var dateAEl = document.getElementById("dateA");
 var dateBEl = document.getElementById("dateB");
@@ -69,6 +71,8 @@ function getUserWeather(cityName) {
 
       var weatherIcon = document.createElement("img");
       weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+      weatherIconEl.appendChild(weatherIcon);
+
       console.log(weatherIcon);
       console.log(temp, humidity, icon, speed);
 //Change current weather elements using data extract from response
