@@ -101,6 +101,19 @@ h4 {
     font-size: 20px;
 }
  
+
+#currentDate {
+    font-size: 25px;
+    margin-left: 8px;
+}
+
+#currentCity {
+    font-size: 40px;
+    display: flex;
+    margin: 0;
+    margin-left: 15px;
+}
+
 #currentTemp, #weatherIcon, #currentHumid,
 #currentWind, #currentUv {
     margin-left: 8px;
@@ -113,8 +126,11 @@ h4 {
     font-size: 17px;
 }
 
-.weatherIcon {
+#weatherIcon {
     margin-left: 15px;
+    height:100px;
+    width: 100px;
+    display: block;
 }
 
 h3, h5, #targetDetails {

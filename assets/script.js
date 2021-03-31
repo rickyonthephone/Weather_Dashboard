@@ -6,7 +6,7 @@ var searchBtnEl = document.getElementById("searchBtn");
 var citySelect = userCityNameEl.value.trim();
 var historyLinks = document.getElementById("history");
 var currentCity = document.getElementById("currentCity")
-var today = moment().format("MMM Do YYYY");
+var today = moment().format("MMM Do, YYYY");
 
 var dateAEl = document.getElementById("dateA");
 var dateBEl = document.getElementById("dateB");
@@ -66,11 +66,15 @@ function getUserWeather(cityName) {
       const {temp, humidity} = data.main
       const {icon} = data.weather[0];
       const {speed} = data.wind
+
+      var weatherIcon = document.createElement("img");
+      weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+      console.log(weatherIcon);
       console.log(temp, humidity, icon, speed);
 //Change current weather elements using data extract from response
       currentCity.textContent = cityName;
       //need to get icon to insert vs. icon code.
-      weatherIcon.textContent = icon;
+      // weatherIcon.textContent = icon;
       currentTemp.textContent = temp +" °F";
       currentWind.textContent = speed+" mph";
       currentHumid.textContent = humidity+" %";
