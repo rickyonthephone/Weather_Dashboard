@@ -27,6 +27,7 @@ h1 {
     margin-left:40px;
     float:left;
     margin-top: 15px;
+
 }
 
 .searchText {
@@ -86,7 +87,7 @@ h4 {
 }
 
 .weatherDisplay {
-    background-color: whitesmoke;
+    background-color: antiquewhite;
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;

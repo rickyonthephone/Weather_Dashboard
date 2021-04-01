@@ -99,13 +99,14 @@ function get5day(lat, lon) {
       console.log(data);
 
       //Getting UV index for current weather. 
-      var uvIndex = parseInt(data.current.uvi);
+      var uvIndex = data.current.uvi;
+      uvIndex = Math.ceil(uvIndex);
       uvIndexEL.textContent = "UV Index: "+ uvIndex;
 
       if(uvIndex >= 0 && uvIndex <= 3){
         uvIndexEL.setAttribute("style", "background-color: green")
       } else if(uvIndex > 3 && uvIndex <= 6){
-        uvIndexEL.setAttribute("style", "backgrond-color: yellow")
+        uvIndexEL.setAttribute("style", "background-color: yellow")
       } else if(uvIndex > 6 && uvIndex <= 7 ){
         uvIndexEL.setAttribute("style", "background-color: orange")
       } else if(uvIndex > 7 && uvIndex <= 10){
