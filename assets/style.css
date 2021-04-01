@@ -115,10 +115,15 @@ h4 {
 }
 
 #currentTemp, #weatherIcon, #currentHumid,
-#currentWind, #currentUv {
+#currentWind {
     margin-left: 8px;
     font-size: 17px; 
     margin-right: 3px;
+}
+
+#currentUvIndex {
+    height: 30px;
+    width: 120px;
 }
 
 .units {
