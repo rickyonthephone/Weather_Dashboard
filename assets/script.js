@@ -11,18 +11,22 @@ var targetCityWeatherEl = document.getElementById("targetCityWeather");
 var weatherIconEl = document.getElementById("weatherIcon");
 var uvIndexEL = document.getElementById("currentUvIndex");
 var allDates = document.querySelectorAll(".fiveDay");
-
-
 var forecastDate = document.getElementById("forecastDate");
+
+
+//clears local storage on refresh
+localStorage.clear()
+
 //Prevent default on seach button
 function searchCity(searchEvent) {
   searchEvent.preventDefault();
   //Get city name from form input
   var citySelect = userCityNameEl.value.trim();
 
+
 //Require user to type in a city name
   if (citySelect) {
-    getUserWeather(citySelect);
+    getUserWeather(citySelect, false);
 
   } else {
     alert("City name is required to search.");
@@ -31,7 +35,7 @@ function searchCity(searchEvent) {
 
 //function to fetch weather data for current day weather from API based
 //on user form input
-function getUserWeather(cityName) {
+function getUserWeather(cityName, isHistory) {
 
 
 //Take above parameter to build URL string
@@ -63,26 +67,40 @@ function getUserWeather(cityName) {
       //currentUv.textContent = getUvIndex()
       currentDate.textContent = today; 
 
+      if (!isHistory) {
       //create button for search history
-      var btn = document.createElement("button");
+        var btn = document.createElement("button");
       
-      btn.classList = "historyCityBtn";
-      btn.textContent = cityName;
+          btn.classList = "historyCityBtn";
+          btn.textContent = cityName;
 
-      var cities = JSON.parse(localStorage.getItem("cities"));
-      if (!cities) {
-        cities = [];
-      }
-      cities.push(cityName);
-      localStorage.setItem("cities", JSON.stringify(cities));
-
-      historyLinks.appendChild(btn);
+          var cities = JSON.parse(localStorage.getItem("cities"));
+          if (!cities) {
+          cities = [];
+          }
+      
+          cities.push(cityName);
+          localStorage.setItem("cities", JSON.stringify(cities));
+    
+          historyLinks.appendChild(btn);
+    }
 
 //passing lat and lon coordinates so next function/API call can get the 
 //5 day forecast - previous call only provided current weather data.
       get5day(data.coord.lat, data.coord.lon)
     });
 
+}
+
+function checkDupes (city, cityList) {
+  let found = false
+  for (let index = 0; index < cityList.length; index++) {
+    const currentCity = array[index];
+    if (city == currentCity) {
+      found = true
+    }
+  }
+  return found;
 }
 
 //call to get 5 day forecast features
@@ -171,5 +189,5 @@ getHistoryWeather();
 historyLinks.addEventListener("click", function(event){
     var cityName = event.target.textContent;
 
-    getUserWeather(cityName);
+    getUserWeather(cityName, true);
 })
